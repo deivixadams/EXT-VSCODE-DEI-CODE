@@ -1,0 +1,19 @@
+# Ignorar dependencias y configuraciones locales
+node_modules
+.vscode
+.git
+.gitignore
+package-lock.json
+tsconfig.json
+
+# Archivos innecesarios
+xdata/
+src/
+*.map
+vsce.txt
+estructura.txt
+tree.ps1
+.vscode/
+xdata/
+codebase/
+ai-prog-0.0.1.vsix

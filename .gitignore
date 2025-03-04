@@ -1,0 +1,36 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log*
+
+# TypeScript build outputs
+dist/
+out/
+*.js.map
+*.d.ts
+
+# VS Code Extension packaging
+.vscode-test/
+.vscode/
+
+# MacOS and Linux system files
+.DS_Store
+*.swp
+
+# Logs & temporary files
+logs/
+*.log
+*.gz
+temp/
+
+# Archivos innecesarios
+xdata/
+*.map
+vsce.txt
+estructura.txt
+tree.ps1
+.vscode/
+xdata/
+codebase/
+ai-prog-0.0.1.vsix

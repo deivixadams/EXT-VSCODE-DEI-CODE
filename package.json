@@ -1,0 +1,142 @@
+{
+  "name": "dei-code",
+  "displayName": "dei-code",
+  "description": "Extensión para que los estudiantes mejoren la programación con inteligencia artificial.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deivixadams/DEI-CODE_EXTENSION.git"
+  },
+  "version": "0.0.1",
+  "publisher": "DeiCode",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "aiProgContainer",
+          "title": "Generar Apps",
+          "icon": "$(circuit-board)"
+        }
+      ]
+    },
+    "views": {
+      "aiProgContainer": [
+        {
+          "id": "generateAppsView",
+          "name": "Mis Aplicaciones"
+        }
+      ]
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "ai-prog.copyToClipboard",
+          "group": "0_AiProg@1"
+        },
+        {
+          "command": "ai-prog.copyToModel",
+          "group": "0_AiProg@2"
+        },
+        {
+          "command": "ai-prog.overwriteFile",
+          "group": "0_AiProg@3"
+        },
+        {
+          "command": "ai-prog.copyToGoogle",
+          "group": "0_AiProg@4"
+        },
+        {
+          "command": "ai-prog.insertFileNameComment",
+          "group": "0_AiProg@5"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "ai-prog.copyToClipboard",
+          "group": "0_AiProg@1"
+        },
+        {
+          "command": "ai-prog.copyToModel",
+          "group": "0_AiProg@2"
+        },
+        {
+          "command": "ai-prog.overwriteFile",
+          "group": "0_AiProg@3"
+        },
+        {
+          "command": "ai-prog.copyToGoogle",
+          "group": "0_AiProg@4"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "ai-prog.copyToClipboard",
+          "when": "view == workbench.explorer.fileView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "ai-prog.overwriteFile",
+          "when": "view == workbench.explorer.fileView",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "ai-prog.copyToClipboard",
+        "title": "📋 Copiar al Portapapeles",
+        "icon": "$(clippy)"
+      },
+      {
+        "command": "ai-prog.copyToModel",
+        "title": "🛠️ Copiar al Modelo"
+      },
+      {
+        "command": "ai-prog.overwriteFile",
+        "title": "✍️ Sobrescribir Archivo",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "ai-prog.copyToGoogle",
+        "title": "🌍 Copiar a Google"
+      },
+      {
+        "command": "ai-prog.insertFileNameComment",
+        "title": "📝 Insertar Comentario"
+      },
+      {
+        "command": "ai-prog.editAppWithIA",
+        "title": "🤖 Editar aplicación con IA"
+      },
+      {
+        "command": "ai-prog.openPrototypeSelector",
+        "title": "Escoger Prototipo"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "build": "npm run compile",
+    "test": "echo \"No tests specified\" && exit 0",
+    "dev": "npm run build && code --extensionDevelopmentPath=%cd%"
+  },
+  "devDependencies": {
+    "@types/node": "16.x",
+    "@types/vscode": "^1.97.0",
+    "@types/ws": "^8.5.14",
+    "typescript": "^4.9.5",
+    "vsce": "^2.9.0"
+  },
+  "dependencies": {
+    "axios": "^1.8.1",
+    "node-fetch": "^3.3.2",
+    "ollama": "^0.5.14"
+  }
+}
