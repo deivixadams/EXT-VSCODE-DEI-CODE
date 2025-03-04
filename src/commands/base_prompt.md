@@ -1,4 +1,4 @@
-Please write only programming code. Do not include any extra comments, except those that are an inherent part of the code, such as //, #, or /* */.
+Without losing the current functionality. Please write only programming code. Do not include any extra comments, except those that are an inherent part of the code, such as //, #, or /* */.
 
 Ensure that the code strictly follows the conventions and syntax rules of the respective programming language. For example:
 
