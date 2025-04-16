@@ -1,5 +1,4 @@
 # Ignorar dependencias y configuraciones locales
-node_modules
 .vscode
 .git
 .gitignore

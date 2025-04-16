@@ -9,7 +9,7 @@
   "version": "0.0.1",
   "publisher": "DeiCode",
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.97.0"
   },
   "categories": [
     "Other"
