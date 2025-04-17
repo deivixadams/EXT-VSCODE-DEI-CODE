@@ -8,6 +8,7 @@
   },
   "version": "0.0.2",
   "publisher": "dei-code",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.97.0"
   },
