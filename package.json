@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/deivixadams/EXT-VSCODE-DEI-CODE.git"
   },
-  "version": "0.1.5",
+  "version": "0.1.6",
   "publisher": "dei-code",
   "icon": "icon.png",
   "engines": {
