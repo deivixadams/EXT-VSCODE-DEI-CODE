@@ -1,10 +1,6 @@
 # 🤖 DEI Code
 
-## 📦 Repositorio
-
-Código fuente disponible en GitHub:  
 ![DEI Code Banner](https://github.com/deivixadams/EXT-VSCODE-DEI-CODE/raw/main/banner.png)
-
 
 **DEI Code** es una extensión para [Visual Studio Code](https://code.visualstudio.com/) que ayuda a los estudiantes a mejorar la programación con **inteligencia artificial**.  
 Integra comandos útiles y herramientas automáticas para escribir, refactorizar, documentar y analizar código fuente mediante modelos de IA como GPT u Ollama.
@@ -65,6 +61,13 @@ O usando la CLI:
 ```bash
 code --install-extension dei-code
 ```
+
+---
+
+## 📦 Repositorio
+
+Código fuente disponible en GitHub:  
+🔗 [https://github.com/deivixadams/EXT-VSCODE-DEI-CODE](https://github.com/deivixadams/EXT-VSCODE-DEI-CODE)
 
 ---
 
