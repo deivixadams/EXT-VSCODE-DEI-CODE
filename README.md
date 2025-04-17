@@ -67,7 +67,8 @@ code --install-extension dei-code
 ## 📦 Repositorio
 
 Código fuente disponible en GitHub:  
-👉 [https://github.com/deivixadams/DEI-CODE_EXTENSION](https://github.com/deivixadams/DEI-CODE_EXTENSION)
+👉 ![DEI Code Banner](https://github.com/deivixadams/EXT-VSCODE-DEI-CODE/raw/main/banner.png)
+
 
 ---
 
