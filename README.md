@@ -1,13 +1,41 @@
-# MultiFile Clipboard
+# 🤖 DEI Code
 
-Esta extensión permite:
+Extensión para [Visual Studio Code](https://code.visualstudio.com/) que ayuda a los estudiantes a mejorar la programación con **inteligencia artificial**. Integra comandos prácticos y asistencia automática para escribir, refactorizar y analizar código fuente.
 
-1. **Copiar el contenido de uno o varios archivos** al portapapeles.  
-   - Click derecho en el/los archivo(s) en el Explorador → `Copiar Contenido de Archivo(s)`
-   - O atajo de teclado (configurado como `Ctrl+Shift+C` en la definición del ejemplo).
-2. **Sobrescribir el archivo actual** con el contenido del portapapeles, previa confirmación.  
-   - Click derecho en el archivo → `Sobre-escribir Archivo con Portapapeles`
-   - Atajo de teclado (`Ctrl+Alt+O`).
-3. **Insertar un comentario con el nombre del archivo** y dos líneas vacías en el editor activo.  
-   - Atajo de teclado (`Ctrl+Shift+Z`).
-   - Detecta la extensión del archivo y usa un prefijo de comentario apropiado (por ejemplo, `//` para `.js`, `#` para `.py`).
+![DEI Code Banner](./icon.png)
+
+---
+
+## ✨ Características
+
+- 📋 **Copiar al Portapapeles**  
+  Copia el contenido de archivos seleccionados, listo para usar con herramientas de IA (como modelos LLM).
+
+- 🛠️ **Copiar al Modelo**  
+  Envía el código directamente al modelo de IA para recibir sugerencias o resúmenes.
+
+- ✍️ **Sobrescribir Archivo**  
+  Mejora o reescribe un archivo de forma asistida por IA, reemplazando su contenido de forma segura.
+
+- 🌍 **Copiar a Google**  
+  Envía texto para búsqueda o análisis contextual.
+
+- 📝 **Insertar Comentario con Nombre de Archivo**  
+  Añade automáticamente una línea de comentario con el nombre del archivo en el encabezado.
+
+---
+
+## 🚀 Beneficios
+
+✅ Integra IA directamente en el flujo de trabajo de estudiantes y principiantes.  
+✅ Fomenta el aprendizaje autónomo y la creatividad.  
+✅ Simplifica la interacción con modelos inteligentes (como GPT u Ollama).
+
+---
+
+## 📦 Instalación
+
+Desde el [Marketplace de VS Code](https://marketplace.visualstudio.com):
+
+```bash
+code --install-extension dei-code

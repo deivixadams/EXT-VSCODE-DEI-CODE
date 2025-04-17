@@ -1,6 +1,7 @@
 
 //file name: src/commands/index.ts
 
+import * as vscode from 'vscode'; // Importa el módulo de VSCode	
 import { copyToClipboardHandler } from './clipboardCommands';
 import { overwriteFileHandler, insertFileNameCommentHandler } from './fileCommands';
 import { copyToGoogleHandler } from './searchCommands';
@@ -16,7 +17,9 @@ interface CommandDefinition {
 export const COMMANDS: CommandDefinition[] = [
   {
     name: 'ai-prog.copyToClipboard',
-    callback: copyToClipboardHandler,
+    callback: (clickedUri: vscode.Uri, selectedUris: vscode.Uri[]) => {
+      return copyToClipboardHandler(clickedUri, selectedUris);
+    },
   },
   {
     name: 'ai-prog.copyToModel',

@@ -1,42 +1,49 @@
+// Nombre del archivo: fileToModelMultiple.ts
+
+
+
+// Nombre del archivo: fileToModelMultiple.ts
+
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { AiIntegration } from '../utils/AiIntegration';
 
+/**
+ * Maneja la acción de copiar múltiples archivos al modelo de IA,
+ * incluyendo un prompt del usuario y un prompt base cargado desde un archivo.
+ */
 export async function copyToModelMultipleHandler(
   clickedUri?: vscode.Uri,
   selectedUris?: vscode.Uri[]
 ): Promise<void> {
-  // Usamos los archivos seleccionados que ya se han pasado como argumentos (menú contextual)
-  // o, si no existen, usamos el archivo activo.
+  // Paso 1: Determinar archivos seleccionados
   let fileUris: vscode.Uri[] = [];
-  if (selectedUris && selectedUris.length > 0) {
+  if (selectedUris?.length) {
     fileUris = selectedUris;
   } else if (clickedUri) {
     fileUris = [clickedUri];
+  } else if (vscode.window.activeTextEditor) {
+    fileUris = [vscode.window.activeTextEditor.document.uri];
   } else {
-    const activeEditor = vscode.window.activeTextEditor;
-    if (activeEditor) {
-      fileUris = [activeEditor.document.uri];
-    } else {
-      vscode.window.showErrorMessage("No se encontró ningún archivo seleccionado ni hay un editor activo.");
-      return;
-    }
+    vscode.window.showErrorMessage("No se encontró ningún archivo seleccionado ni hay un editor activo.");
+    return;
   }
 
-  // Solicita al usuario un prompt adicional para la consulta.
+  // Paso 2: Solicitar un prompt adicional al usuario
   const userPrompt = await vscode.window.showInputBox({
     prompt: "Escribe un prompt para la consulta al modelo:",
-    placeHolder: "Ej: 'Resume el contenido de estos archivos...'"
+    placeHolder: "Ej: 'Resume el contenido de estos archivos...'",
+    ignoreFocusOut: true,
   });
   if (userPrompt === undefined) {
     vscode.window.showWarningMessage("Operación cancelada.");
     return;
   }
 
-  // Lee el contenido del archivo base_prompt.md (ruta fija).
-  const basePromptPath = "E:\\DEV\\EXTENSION_VSC\\DEI-CODE-v3\\src\\commands\\base_prompt.md";
+  // Paso 3: Leer base_prompt.md desde ruta relativa
+  const basePromptPath = path.join(__dirname, 'base_prompt.md');
   let basePromptContent = "";
   try {
     basePromptContent = fs.readFileSync(basePromptPath, 'utf8');
@@ -45,7 +52,7 @@ export async function copyToModelMultipleHandler(
     return;
   }
 
-  // Lee el contenido de cada archivo seleccionado.
+  // Paso 4: Leer contenido de los archivos seleccionados
   let filesContent = "";
   for (const uri of fileUris) {
     try {
@@ -57,36 +64,42 @@ export async function copyToModelMultipleHandler(
     }
   }
 
-  // Construye el contenido final: prompt del usuario + base_prompt + contenidos de archivos.
+  // Paso 5: Combinar el contenido final del prompt
   const finalContent = `${userPrompt}\n\n${basePromptContent}\n\n${filesContent}`;
 
-  // Guarda el prompt final en un archivo "sendtomodel.md" en el directorio del usuario activo.
+  // Paso 6: Guardar el prompt final como registro local
   const homeDir = os.homedir();
   const logFilePath = path.join(homeDir, "sendtomodel.md");
-  const now = new Date().toLocaleString();
+  const timestamp = new Date().toLocaleString();
   try {
-    fs.appendFileSync(logFilePath, `\n\n--- Envío a ${now} ---\n\n${finalContent}\n`, 'utf8');
-    vscode.window.showInformationMessage(`El prompt final se ha registrado en sendtomodel.md en ${homeDir}`);
+    fs.appendFileSync(logFilePath, `\n\n--- Envío a ${timestamp} ---\n\n${finalContent}\n`, 'utf8');
+    vscode.window.showInformationMessage(`📝 Prompt registrado en ${logFilePath}`);
   } catch (err) {
-    vscode.window.showWarningMessage("No se pudo guardar el prompt final en sendtomodel.md: " + (err as Error).message);
+    vscode.window.showWarningMessage("No se pudo guardar el prompt final: " + (err as Error).message);
   }
 
-  // Muestra el prompt final en la consola (para depuración)
+  // Paso 7: Mostrar en consola (debug)
   console.log("Prompt final enviado al modelo:\n", finalContent);
 
-  // Envía el contenido final al modelo usando AiIntegration (con spinner)
+  // Paso 8: Enviar al modelo y mostrar la respuesta
   const aiIntegration = new AiIntegration();
   aiIntegration.sendPromptToAiWithSpinner(finalContent, "plain_text", (response: any) => {
     if (response.error) {
-      vscode.window.showErrorMessage(`Error en AI-Model: ${response.error}`);
+      vscode.window.showErrorMessage(`❌ Error en AI-Model: ${response.error}`);
     } else {
-      vscode.window.showInformationMessage(`Respuesta de AI-Model: ${response.content}`);
-      // Copia la respuesta al portapapeles
+      // Mostrar en OutputChannel
+      const output = vscode.window.createOutputChannel("DEI Code - AI Response");
+      output.clear();
+      output.appendLine(response.content);
+      output.show(true);
+
+      // Copiar al portapapeles
       vscode.env.clipboard.writeText(response.content).then(
-        () => console.log("Respuesta copiada al portapapeles."),
-        (err) => console.error("Error copiando al portapapeles:", err)
+        () => console.log("✅ Respuesta copiada al portapapeles."),
+        (err) => console.error("❌ Error al copiar al portapapeles:", err)
       );
+
+      vscode.window.showInformationMessage("✅ Respuesta recibida y copiada al portapapeles.");
     }
   });
 }
-//Prueba2

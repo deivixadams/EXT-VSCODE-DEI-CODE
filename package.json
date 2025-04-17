@@ -7,14 +7,29 @@
     "url": "https://github.com/deivixadams/DEI-CODE_EXTENSION.git"
   },
   "version": "0.0.1",
-  "publisher": "DeiCode",
+  "publisher": "dei-code",
   "engines": {
     "vscode": "^1.97.0"
   },
   "categories": [
     "Other"
   ],
+
   "main": "./out/extension.js",
+
+  "activationEvents": [
+    "onCommand:ai-prog.copyToClipboard",
+    "onCommand:ai-prog.copyToModel",
+    "onCommand:ai-prog.overwriteFile",
+    "onCommand:ai-prog.copyToGoogle",
+    "onCommand:ai-prog.insertFileNameComment",
+    "onCommand:ai-prog.generateApps",
+    "onCommand:ai-prog.openDirectory",
+    "onCommand:ai-prog.collapseAllNodes",
+    "onCommand:ai-prog.expandAllNodes",
+    "onView:generateAppsView"
+  ],
+
   "contributes": {
     "viewsContainers": {
       "activitybar": [
