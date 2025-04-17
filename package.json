@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/deivixadams/DEI-CODE_EXTENSION.git"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "dei-code",
   "icon": "icon.png",
   "engines": {
