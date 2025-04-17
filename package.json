@@ -4,7 +4,7 @@
   "description": "Extensión para que los estudiantes mejoren la programación con inteligencia artificial.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/deivixadams/EXT-VSCODE-DEI-CODE.gitt"
+    "url": "https://github.com/deivixadams/EXT-VSCODE-DEI-CODE.git"
   },
   "version": "0.1.4",
   "publisher": "dei-code",
